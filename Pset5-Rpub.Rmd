@@ -1,7 +1,4 @@
 ---
-title: "P-Set Rpub"
-author: "Diego Flores"
-date: "10/15/2019"
 output: html_document
 ---
 
@@ -25,6 +22,6 @@ download.file("https://raw.githubusercontent.com/TheUpshot/2018-live-poll-result
 election_poll <- read.csv("raw_data/elections-poll-fl15-3.csv")
 
 election_poll %>% ggplot(aes(x = file_race, y = final_weight, color = gender)) + 
-  geom_point() + geom_jitter() + labs(title = "Weight and Gender of Answers by Race", x = "Race", y = "Weight of Answer")
+  geom_point() + geom_jitter() + labs(title = "Weight and Gender of Answers by Race for 2018 Election", x = "Race", y = "Weight of Answer")
 ```
 
