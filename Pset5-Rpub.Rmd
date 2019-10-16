@@ -1,0 +1,30 @@
+---
+title: "P-Set Rpub"
+author: "Diego Flores"
+date: "10/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, error = FALSE)
+library(ggplot2)
+library(dplyr)
+library(janitor)
+library(readr)
+library(purrr)
+library(tibble)
+library(stringr)
+library(tidyverse)
+library(fs)
+```
+```{r}
+dir_create("raw_data")
+
+download.file("https://raw.githubusercontent.com/TheUpshot/2018-live-poll-results/master/data/elections-poll-fl15-3.csv", destfile = "raw_data/elections-poll-fl15-3.csv", mode = "wb")
+
+election_poll <- read.csv("raw_data/elections-poll-fl15-3.csv")
+
+election_poll %>% ggplot(aes(x = file_race, y = final_weight, color = gender)) + 
+  geom_point() + geom_jitter() + labs(title = "Weight and Gender of Answers by Race", x = "Race", y = "Weight of Answer")
+```
+
